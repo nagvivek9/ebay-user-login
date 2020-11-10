@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Site Metas -->
+    <title>eBay</title>
+    <meta name="keywords" content="eBay">
+    <meta name="description" content="Posting ad on eBay">
+    <meta name="author" content="webtogo">
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="#" />
+ </head>
+ <body >
+  <h3 id="lbl_status">Loading ...</h3>
+  <script src="intractable.js"></script>
+  <script type="text/javascript">
+   const url = new URL( window.location);
+   const code = url.searchParams.get("code");
+   console.log(code);
+   const a = document.createElement('a');
+   a.setAttribute('href', url);
+   const host=`${a.protocol}//${a.hostname}`;
+   const intractable_client=new intractable();
+   intractable_client.init(host,a.port)
+   intractable_client.request('ebay/usertoken',{code:code},(e,r)=>{
+    if(e) return console.error(e);
+    document.getElementById('lbl_status').innerText=r.token;
+   });
+   
+   
+   // fetch(api_path,
+   //       {
+   //        method: 'POST',
+   //        headers: {
+   //         'Accept': 'application/json',
+   //         'Content-Type': 'application/json'
+   //        },
+   //        body: JSON.stringify({code})
+   //       }
+   //      )
+   //      .then(resp=>(console.log(typeof resp),resp))
+   //      .then(resp=>(console.log(resp),resp))
+   //      .then((resp)=>(document.getElementById('lbl_status').innerText=resp.body.))
+   //      .catch(console.error);
+  </script>
+ </body>
+</html>
+
+  
