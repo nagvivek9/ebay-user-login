@@ -1,2 +1,2 @@
 # ebay-user-login
-To get a user token to call eBay APIs
+To get access token for an user in a secure way. i,e. provided by ebay
