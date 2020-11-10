@@ -56,10 +56,13 @@ app.use(express.static(PATH.join(__dirname,'public')));
 NS.listen(port,function(){
  console.log('HTTP server listening on the port %d',port);
 });
+
 const EbayAuthToken = require('ebay-oauth-nodejs-client');
-let ebayAuthToken = new EbayAuthToken({
+const ebayAuthToken = new EbayAuthToken({
  filePath: './ebay-config-sample.json'
 });
+
+ebayAuthToken.
 
 app.get('/api/ebay/auth',(req,res,cb)=>{
  console.info('authenticating user');
